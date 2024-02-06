@@ -1,5 +1,5 @@
 # cd.yml
-name: dev branch auto ci process script
+name: main branch auto cd process script
 
 on: # 아래 job을 실행시킬 상황
   push:
@@ -14,7 +14,7 @@ jobs:
 
     steps:
       - name: excuting remote ssh commands
-        uses: appleboy/ssh-action@v0.1.6 # ssh 접속하는 오픈소스
+        uses: appleboy/ssh-action@master # ssh 접속하는 오픈소스
         
         with:
           host: ${{ secrets.AWS_IP }} # 인스턴스 IP
