@@ -1,0 +1,28 @@
+# cd.yml
+name: main branch auto cd process script
+
+on: # 아래 job을 실행시킬 상황
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ] 
+
+jobs:
+  deploy:
+    name: deploy
+    runs-on: ubuntu-latest # 실행될 인스턴스 OS와 버전
+
+    steps:
+      - name: excuting remote ssh commands
+        uses: appleboy/ssh-action@master # ssh 접속하는 오픈소스
+        
+        with:
+          host: ${{ secrets.AWS_IP }} # 인스턴스 IP
+          username: ${{ secrets.AWS_USER }} # 우분투 아이디
+          key: ${{ secrets.AWS_PRIVATE_KEY }} # ec2 instance pem key
+          port: ${{ secrets.AWS_SSH_PORT }} # 접속포트
+          
+          script: | # 실행할 스크립트
+            cd /home/ubuntu
+            echo "GOOGLE_CALLBACK_URL=${{ secrets.GOOGLE_CALLBACK_URL }}" >> .env
+            echo "GOOGLE_CALLBACK_URL=${{ secrets.GOOGLE_CALLBACK_URL }}" >> .env
