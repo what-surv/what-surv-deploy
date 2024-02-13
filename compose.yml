@@ -1,0 +1,29 @@
+services:
+  # frontend:
+  #   build:
+  #     context: what-surv-frontend
+  #   ports:
+  #     - "5173:5173"
+
+  backend:
+    build:
+      context: what-surv-backend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    env_file:
+      - ./what-surv-backend/.env
+
+  db:
+    image: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    env_file:
+      - ./what-surv-backend/.env
+
+# register named volumes
+volumes:
+  db-data:
