@@ -25,20 +25,19 @@ services:
       - db-data:/var/lib/postgresql/data
     env_file:
       - ./what-surv-backend/.env
+  # caddy:
+  #   image: caddy
+  #   ports:
+  #     - "80:80"
+  #     - "443:443"
+  #     - "443:443/udp"
+  #   volumes:
+  #     - ./Caddyfile:/etc/caddy/Caddyfile
+  #     - caddy_data:/data
+  #     - caddy_config:/config
 
-  caddy:
-    image: caddy
-    ports:
-      - "80:80"
-      - "443:443"
-      - "443:443/udp"
-    volumes:
-      - ./Caddyfile:/etc/caddy/Caddyfile
-      - caddy_data:/data
-      - caddy_config:/config
-
-# register named volumes
+  # register named volumes
 volumes:
   db-data:
-  caddy_data:
-  caddy_config:
+    # caddy_data:
+    # caddy_config:
