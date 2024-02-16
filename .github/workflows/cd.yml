@@ -23,6 +23,6 @@ jobs:
           port: ${{ secrets.AWS_SSH_PORT }} # 접속포트
           
           script: | # 실행할 스크립트
-            cd /home/ubuntu
-            echo "GOOGLE_CALLBACK_URL=${{ secrets.GOOGLE_CALLBACK_URL }}" >> .env
-            echo "GOOGLE_CALLBACK_URL=${{ secrets.GOOGLE_CALLBACK_URL }}" >> .env
+            cd /home/ubuntu/what-surv-deploy
+            git pull origin main --recurse-submodules
+            docker compose up --build -d
