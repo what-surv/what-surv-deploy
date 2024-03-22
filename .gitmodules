@@ -1,0 +1,6 @@
+[submodule "what-surv-backend"]
+	path = what-surv-backend
+	url = https://github.com/what-surv/what-surv-backend
+[submodule "what-surv-frontend"]
+	path = what-surv-frontend
+	url = https://github.com/what-surv/what-surv-frontend
