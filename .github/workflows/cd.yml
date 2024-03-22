@@ -25,4 +25,4 @@ jobs:
           script: | # 실행할 스크립트
             cd /home/ubuntu/what-surv-deploy
             git pull origin main --recurse-submodules
-            docker compose up --build -d
+            sudo docker compose up --build -d
