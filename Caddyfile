@@ -1,0 +1,9 @@
+surveyit.co.kr {
+    root * /srv
+    file_server
+    encode gzip
+}
+
+app.surveyit.co.kr {
+    reverse_proxy localhost:3000
+}
