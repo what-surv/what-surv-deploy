@@ -4,6 +4,6 @@ surveyit.co.kr {
     encode gzip
 }
 
-app.surveyit.co.kr {
-    reverse_proxy localhost:3000
+api.surveyit.co.kr {
+    reverse_proxy backend:3000
 }
