@@ -4,6 +4,23 @@ services:
       context: what-surv-frontend
     ports:
       - "5173:5173"
+    volumes:
+      - app_dist:/usr/app/dist
+  
+  caddy:
+    image: caddy:2
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - app_dist:/srv
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - caddy_data:/data
+      - caddy_config:/caddy_config
+    restart: unless-stopped
+    depends_on:
+      - backend
+      - frontend
 
   backend:
     build:
@@ -28,3 +45,6 @@ services:
 
 volumes:
   db-data:
+  caddy_data:
+  caddy_config:
+  app_dist:
