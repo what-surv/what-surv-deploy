@@ -5,7 +5,7 @@ services:
     ports:
       - "5173:5173"
     volumes:
-      - app_dist:/usr/app/dist
+      - app_dist:/usr/app/frontend/dist
   
   caddy:
     image: caddy:2
