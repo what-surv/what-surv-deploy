@@ -2,6 +2,10 @@ surveyit.co.kr {
     root * /srv
     file_server
     encode gzip
+    @notStatic {
+        not file
+    }
+    rewrite @notStatic /index.html
 }
 
 api.surveyit.co.kr {
